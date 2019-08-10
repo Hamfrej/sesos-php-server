@@ -11,6 +11,7 @@
 |
 */
 
+Route::resource('classrooms', 'ClassroomController');
 Route::get('/', function () {
     return view('welcome');
 });

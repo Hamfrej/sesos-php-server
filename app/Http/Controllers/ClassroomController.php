@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ClassroomController extends Controller
 {
     public function index()
     {
-        return Classroom::all();
+        $classrooms = Classroom::all();
+        return view('classrooms.index', [
+            'classrooms' => $classrooms
+        ]);
     }
 
     public function show(Classroom $classroom)
