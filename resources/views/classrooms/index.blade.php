@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-between p-1">
                 <div class="">
-                    <h2 >Lista dostępnych sal lekcyjnych</h2>
+                    <h2>Lista dostępnych sal lekcyjnych</h2>
                 </div>
                 <div class="">
                     <button class="btn btn-primary">Dodaj nową salę</button>
@@ -28,24 +28,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                @foreach($classrooms as $classroom)
+                    <tr>
+                        <th scope="row"></th>
+                        <th>{{ $classroom->name }}</th>
+                        <th>{{ $classroom->description }}</th>
+                        <th>
+                            <div class="btn-group bt">
+                                <button class="btn btn-secondary">Edytuj salę</button>
+                                <button class="btn btn-danger">Usuń salę</button>
+                            </div>
+                        </th>
+                    </tr>
+                @endforeach()
                 </tbody>
             </table>
         </div>
