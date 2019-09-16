@@ -12,6 +12,7 @@
 */
 
 Route::resource('classrooms', 'ClassroomController');
+Route::resource('lessons', 'LessonController');
 Route::get('/', function () {
     return view('welcome');
 });

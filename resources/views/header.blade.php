@@ -8,6 +8,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/classrooms">Sale</a>
             </li>
+            <li>
+                <a class="nav-link" href="/lessons">Zajęcia</a>
+            </li>
         </ul>
     </div>
 </nav>
