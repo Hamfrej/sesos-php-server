@@ -11,6 +11,9 @@
 |
 */
 
+Route::resource('classrooms', 'ClassroomController');
+Route::resource('lessons', 'LessonController');
+Route::resource('attendance-lists', 'AttendanceListController');
 Route::get('/', function () {
     return view('welcome');
 });
