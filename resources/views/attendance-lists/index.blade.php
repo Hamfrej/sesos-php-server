@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    <title>Lista zajęć</title>
+    <title>Listy obecności</title>
 @endsection
 
 @section('content')
@@ -9,10 +9,10 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-between p-1">
                 <div class="">
-                    <h2>Lista zajęć</h2>
+                    <h2>Listy obecności</h2>
                 </div>
                 <div class="">
-                    <a href="/lessons/create" class="btn btn-primary">Dodaj nowe zajęcia</a>
+                    <a href="/attendance-lists/create" class="btn btn-primary">Dodaj nową listę obecności</a>
                 </div>
             </div>
         </div>
@@ -22,22 +22,23 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nazwa</th>
-                    <th scope="col">Opis</th>
-                    <th scope="col">Prowadzący</th>
+                    <th scope="col">Klasa</th>
+                    <th scope="col">Data rozpoczęcia</th>
+                    <th scope="col">Data zakończenia</th>
                     <th scope="col">Akcje</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($lessons as $lesson)
+                @foreach($attendanceLists as $attendanceList)
                     <tr>
                         <th scope="row"></th>
-                        <th>{{ $lesson->name }}</th>
-                        <th>{{ substr($lesson->description, 0, 30) }}</th>
+                        <th>{{ $attendanceList->clasroom_id }}</th>
+                        <th>{{ $attendanceList->start_date}}</th>
+                        <th>{{ $attendanceList->end_date}}</th>
                         <th>
                             <div class="btn-group bt">
-                                <button class="btn btn-secondary">Edytuj salę</button>
-                                <button class="btn btn-danger">Usuń salę</button>
+                                <button class="btn btn-secondary">Edytuj listę</button>
+                                <button class="btn btn-danger">Usuń listę</button>
                             </div>
                         </th>
                     </tr>

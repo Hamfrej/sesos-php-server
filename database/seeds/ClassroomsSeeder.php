@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Classroom;
 use Illuminate\Database\Seeder;
 
 class ClassroomsSeeder extends Seeder
@@ -11,10 +12,10 @@ class ClassroomsSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Classroom::create([
+        Classroom::create([
             'name' => 'E3',
             'description' => 'Laboratorium komputerowe']);
-        \App\Models\Classroom::create([
+        Classroom::create([
             'name' => 'E4',
             'description' => 'Laboratorium komputerowe']);
     }
