@@ -15,47 +15,44 @@
 @section('content')
     <div class="row mt-md-3">
         <div class="col-md-6">
-            <form action="/lessons" method="POST">
+            <form action="/attendance-lists" method="POST">
                 {{ @csrf_field() }}
                 <div class="form-group">
-                    <label for="name">Nazwa zajęć</label>
-                    <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp"
-                           placeholder="Wprowadź nazwę zajęć" required>
+                    <label for="classroom">Zajęcia</label>
+                    <select class="form-control" id="classroom" name="lesson_id" required>
+                        @foreach($lessons as $lessons)
+                            <option value="{{ $lessons->id }}">{{ $lessons->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="description">Opis</label>
-                    <textarea name="description" id="description" cols="30" rows="5" class="form-control"></textarea>
+                    <label for="classroom">Sala lekcyjna</label>
+                    <select class="form-control" id="classroom" name="classroom_id" required>
+                        @foreach($classrooms as $classroom)
+                            <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
-{{--                <div class="form-group">--}}
-{{--                    <label for="classroom">Sala lekcyjna</label>--}}
-{{--                    <select class="form-control" id="classroom" name="classroom" required>--}}
-{{--                        @foreach($classrooms as $classroom)--}}
-{{--                            <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>--}}
-{{--                        @endforeach--}}
-{{--                    </select>--}}
-{{--                </div>--}}
-{{--                <div class="form-group">--}}
-{{--                    <label for="start_date">Godzina rozpoczęcia zajęć</label>--}}
-{{--                    <div class="input-group date" id="start_date" data-target-input="nearest">--}}
-{{--                        <input type="text" class="form-control datetimepicker-input" data-target="#start_date"--}}
-{{--                               name="start_date"/>--}}
-{{--                        <div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">--}}
-{{--                            <div class="input-group-text"><i class="fa fa-clock-o"></i></div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="form-group">--}}
-{{--                    <label for="end_date">Godzina zakończenia zajęć</label>--}}
-{{--                    <div class="input-group date" id="end_date" data-target-input="nearest">--}}
-{{--                        <input type="text" class="form-control datetimepicker-input" data-target="#start_date"--}}
-{{--                               name="end_date"/>--}}
-{{--                        <div class="input-group-append" data-target="#end_date" data-toggle="datetimepicker">--}}
-{{--                            <div class="input-group-text"><i class="fa fa-clock-o"></i></div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-
+                <div class="form-group">
+                    <label for="start_date">Godzina rozpoczęcia zajęć</label>
+                    <div class="input-group date" id="start_date" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#start_date"
+                               name="start_date"/>
+                        <div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="end_date">Godzina zakończenia zajęć</label>
+                    <div class="input-group date" id="end_date" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#start_date"
+                               name="end_date"/>
+                        <div class="input-group-append" data-target="#end_date" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary">Stwórz zajęcia</button>
             </form>
         </div>
@@ -64,10 +61,12 @@
     <script type="text/javascript">
         $(function () {
             $('#start_date').datetimepicker({
-                format: 'HH:mm'
+                locale: 'pl',
+                format: 'DD/MM/YYYY HH:mm'
             });
             $('#end_date').datetimepicker({
-                format: 'HH:mm'
+                locale: 'pl',
+                format: 'DD/MM/YYYY HH:mm'
             });
         });
     </script>

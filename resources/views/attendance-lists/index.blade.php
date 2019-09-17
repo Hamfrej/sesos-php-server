@@ -17,11 +17,11 @@
             </div>
         </div>
         <div class="col-md-12 ">
-
             <table class="table table-striped">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Zajęcia</th>
                     <th scope="col">Klasa</th>
                     <th scope="col">Data rozpoczęcia</th>
                     <th scope="col">Data zakończenia</th>
@@ -32,7 +32,8 @@
                 @foreach($attendanceLists as $attendanceList)
                     <tr>
                         <th scope="row"></th>
-                        <th>{{ $attendanceList->clasroom_id }}</th>
+                        <th>{{ $attendanceList->lesson->name }}</th>
+                        <th>{{ $attendanceList->classroom->name }}</th>
                         <th>{{ $attendanceList->start_date}}</th>
                         <th>{{ $attendanceList->end_date}}</th>
                         <th>

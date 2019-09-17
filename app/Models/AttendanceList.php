@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class AttendanceList extends Model
 {
-    protected $fillable = ['classroom_id', 'start_time', 'end_time'];
+    protected $fillable = ['lesson_id', 'classroom_id', 'start_date', 'end_date'];
+
+    public function classroom()
+    {
+        return $this->belongsTo('App\Models\Classroom');
+    }
+
+    public function lesson()
+    {
+        return $this->belongsTo('App\Models\Lesson');
+    }
 }

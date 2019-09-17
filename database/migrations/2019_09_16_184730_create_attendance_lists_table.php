@@ -15,12 +15,14 @@ class CreateAttendanceListsTable extends Migration
     {
         Schema::create('attendance_lists', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('lesson_id')->nullable();
             $table->unsignedInteger('classroom_id')->nullable();
-            $table->smallInteger('start_time');
-            $table->smallInteger('end_time');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
 
             $table->timestamps();
             $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('SET NULL');
+            $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('SET NULL');
         });
     }
 

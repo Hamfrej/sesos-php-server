@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\AttendanceList;
+
+use App\Models\Classroom;
+use App\Models\Lesson;
+use DateTime;
 use Illuminate\Http\Request;
 
 class AttendanceListController extends Controller
@@ -14,7 +18,7 @@ class AttendanceListController extends Controller
      */
     public function index()
     {
-        $attendanceLists =  AttendanceList::all();
+        $attendanceLists =  AttendanceList::with(['classroom', 'lesson'])->get();
         return view('attendance-lists.index', [
             'attendanceLists' => $attendanceLists
         ]);
@@ -27,7 +31,12 @@ class AttendanceListController extends Controller
      */
     public function create()
     {
-        return 'add';
+        $classrooms = Classroom::all();
+        $lessons = Lesson::all();
+        return view('attendance-lists.create', [
+            'classrooms' => $classrooms,
+            'lessons' => $lessons
+        ]);
     }
 
     /**
@@ -38,7 +47,16 @@ class AttendanceListController extends Controller
      */
     public function store(Request $request)
     {
-        $attendanceList = AttendanceList::create($request->all());
+        $attendanceList = new AttendanceList();
+        $start_date = DateTime::createFromFormat('d/m/Y H:i', $request->get('start_date'));
+        $attendanceList->start_date = $start_date;
+        $end_date = DateTime::createFromFormat('d/m/Y H:i', $request->get('end_date'));
+        $attendanceList->end_date = $end_date;
+        $classroom = Classroom::findOrFail($request->get('classroom_id'));
+        $lesson = Lesson::findOrFail($request->get('lesson_id'));
+        $attendanceList->classroom()->associate($classroom);
+        $attendanceList->lesson()->associate($lesson);
+        $attendanceList->save();
         return $attendanceList;
     }
 
