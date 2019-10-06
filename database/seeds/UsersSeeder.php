@@ -14,8 +14,8 @@ class UsersSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Automatyka i sterowanie',
-            'email' => 'Teoria sterowania',
+            'name' => 'John Doe',
+            'email' => 'john.doe@p.lodz.pl',
             'password' => Hash::make('secret'),
             'university_id' => '123456',
             'nfc_id' => '[132,456,789,123]'

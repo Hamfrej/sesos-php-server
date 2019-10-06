@@ -14,7 +14,7 @@ class AttendanceRecordController extends Controller
      */
     public function index()
     {
-        //
+        //We don't need that one
     }
 
     /**

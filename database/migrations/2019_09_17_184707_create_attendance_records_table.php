@@ -17,9 +17,11 @@ class CreateAttendanceRecordsTable extends Migration
             $table->increments('id');
             $table->string('nfc')->nullable();
             $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('attendance_list_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
+            $table->foreign('attendance_list_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
