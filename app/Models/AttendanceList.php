@@ -17,4 +17,9 @@ class AttendanceList extends Model
     {
         return $this->belongsTo('App\Models\Lesson');
     }
+
+    public function attendanceRecords()
+    {
+        return $this->hasMany('App\Models\AttendanceRecord');
+    }
 }

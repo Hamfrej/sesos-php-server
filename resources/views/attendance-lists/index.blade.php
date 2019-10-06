@@ -38,6 +38,7 @@
                         <th>{{ $attendanceList->end_date}}</th>
                         <th>
                             <div class="btn-group bt">
+                                <a href="/attendance-lists/{{ $attendanceList->id}}/attendance-records" class="btn btn-primary">Pokaż listę</a>
                                 <button class="btn btn-secondary">Edytuj listę</button>
                                 <button class="btn btn-danger">Usuń listę</button>
                             </div>

@@ -18,7 +18,7 @@ class AttendanceListController extends Controller
      */
     public function index()
     {
-        $attendanceLists =  AttendanceList::with(['classroom', 'lesson'])->get();
+        $attendanceLists = AttendanceList::with(['classroom', 'lesson'])->get();
         return view('attendance-lists.index', [
             'attendanceLists' => $attendanceLists
         ]);
@@ -42,7 +42,7 @@ class AttendanceListController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -63,7 +63,7 @@ class AttendanceListController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AttendanceList  $attendanceList
+     * @param \App\Models\AttendanceList $attendanceList
      * @return \Illuminate\Http\Response
      */
     public function show(AttendanceList $attendanceList)
@@ -74,7 +74,7 @@ class AttendanceListController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\AttendanceList  $attendanceList
+     * @param \App\AttendanceList $attendanceList
      * @return \Illuminate\Http\Response
      */
     public function edit(AttendanceList $attendanceList, Request $request)
@@ -85,8 +85,8 @@ class AttendanceListController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\AttendanceList  $attendanceList
+     * @param \Illuminate\Http\Request $request
+     * @param \App\AttendanceList $attendanceList
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, AttendanceList $attendanceList)
@@ -98,12 +98,20 @@ class AttendanceListController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\AttendanceList  $attendanceList
+     * @param \App\AttendanceList $attendanceList
      * @return \Illuminate\Http\Response
      */
     public function destroy(AttendanceList $attendanceList)
     {
         $attendanceList->delete();
         return 'delete';
+    }
+
+    public function showAttendanceRecords(Request $request, $attendanceListID)
+    {
+        $attendanceList = AttendanceList::with('attendanceRecords.user')->find($attendanceListID);
+        return view('attendance-lists.showAttendanceRecords', [
+            'attendanceList' => $attendanceList
+        ]);
     }
 }
