@@ -14,6 +14,8 @@
 Route::resource('classrooms', 'ClassroomController');
 Route::resource('lessons', 'LessonController');
 Route::resource('attendance-lists', 'AttendanceListController');
+Route::resource('attendance-records', 'AttendanceRecordController');
+Route::get('attendance-lists/{attendanceList}/attendance-records', 'AttendanceListController@showAttendanceRecords');
 Route::get('/', function () {
     return view('welcome');
 });
