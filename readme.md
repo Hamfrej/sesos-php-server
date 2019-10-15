@@ -1,6 +1,6 @@
-#API dla urządzeń
+# API dla urządzeń
 
-### GET http(s)://adres_serwera/api/getCurrentLecture/{classroom _name}
+##### GET http(s)://adres_serwera/api/getCurrentLecture/{classroom _name}
 
 Przykładowa odpowiedź
 ```json
