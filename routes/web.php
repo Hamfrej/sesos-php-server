@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('users', 'UserController');
+
 Route::resource('classrooms', 'ClassroomController');
 Route::resource('lessons', 'LessonController');
 Route::resource('attendance-lists', 'AttendanceListController');
