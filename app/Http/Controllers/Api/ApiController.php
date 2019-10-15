@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\AttendanceList;
+use App\Models\AttendanceRecord;
 use App\Models\Classroom;
 use App\Models\Lesson;
+use App\User;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
@@ -23,5 +25,24 @@ class ApiController extends Controller
             ->with('lesson')
             ->get();
         return $list;
+    }
+
+    public function addAttendanceRecord(Request $request, $attendance_list_id)
+    {
+        $attendance_list = AttendanceList::findOrFail($attendance_list_id);
+
+        $attendance_record = new AttendanceRecord();
+        $attendance_record->attendanceList()->associate($attendance_list);
+        $attendance_record->nfc = $request->get('nfc_id');
+        $user = User::where('nfc_id', $request->get('nfc_id'))->first();
+        if ($user) {
+            $attendance_record->user()->associate($user->id);
+        }
+        if ($attendance_record->save()) {
+            return response('Zapisano', 200);
+        } else {
+            return response('Error', 500);
+        }
+
     }
 }

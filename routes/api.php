@@ -18,5 +18,6 @@ use Illuminate\Http\Request;
 //});
 Route::namespace('Api')->group( function () {
     Route::get('getCurrentLecture/{classroom}', 'ApiController@getCurrentLecture');
+    Route::post('addAttendanceRecord/{attendance_list_id}', 'ApiController@addAttendanceRecord');
 });
 
