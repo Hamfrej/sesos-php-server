@@ -14,6 +14,9 @@
             <li>
                 <a class="nav-link" href="/attendance-lists">Listy obecności</a>
             </li>
+            <li>
+                <a class="nav-link" href="/users">Użytkownicy</a>
+            </li>
         </ul>
     </div>
 </nav>
