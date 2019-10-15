@@ -30,7 +30,7 @@ class ClassroomController extends Controller
     {
         $classroom = Classroom::create($request->all());
 
-        return $classroom;
+        return redirect('classrooms');
     }
 
     public function edit(Classroom $classroom)
