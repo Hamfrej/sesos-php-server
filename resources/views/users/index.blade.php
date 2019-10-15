@@ -25,6 +25,7 @@
                     <th scope="col">Imię i nazwisko</th>
                     <th scope="col">Email</th>
                     <th scope="col">Numer albumu</th>
+                    <th scope="col">NFC</th>
                     <th scope="col">Akcje</th>
                 </tr>
                 </thead>
@@ -35,6 +36,7 @@
                         <th>{{ $user->name }}</th>
                         <th>{{ $user->email }}</th>
                         <th>{{ $user->university_id }}</th>
+                        <th>{{ $user->nfc_id }}</th>
                         <th>
                             <div class="btn-group bt">
                                 <a href="/users/{{$user->id}}/edit" class="btn btn-secondary"> Edytuj użytkownika</a>
