@@ -16,6 +16,8 @@ Route::resource('lessons', 'LessonController');
 Route::resource('attendance-lists', 'AttendanceListController');
 Route::resource('attendance-records', 'AttendanceRecordController');
 Route::get('attendance-lists/{attendanceList}/attendance-records', 'AttendanceListController@showAttendanceRecords');
+Route::get('register/{nfc_id}', 'NFCToRegisterController@register');
+Route::post('register', 'UserController@register');
 Route::get('/', function () {
     return view('welcome');
 });

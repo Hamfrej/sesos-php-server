@@ -6,6 +6,7 @@ use App\Models\AttendanceList;
 use App\Models\AttendanceRecord;
 use App\Models\Classroom;
 use App\Models\Lesson;
+use App\Models\NFCToRegister;
 use App\User;
 use Carbon\Carbon;
 use DateTime;
@@ -44,5 +45,13 @@ class ApiController extends Controller
             return response('Error', 500);
         }
 
+    }
+
+    public function register(Request $request, $nfc_id)
+    {
+        $nfc = new NFCToRegister();
+        $nfc->number = $nfc_id;
+        $nfc->save();
+        return $nfc->id;
     }
 }
