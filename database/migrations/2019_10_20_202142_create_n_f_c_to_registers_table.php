@@ -15,7 +15,7 @@ class CreateNFCToRegistersTable extends Migration
     {
         Schema::create('n_f_c_to_registers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('number');
+            $table->string('number');
             $table->timestamps();
         });
     }
