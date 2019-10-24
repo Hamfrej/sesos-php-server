@@ -21,7 +21,7 @@ class CreateAttendanceRecordsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
-            $table->foreign('attendance_list_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreign('attendance_list_id')->references('id')->on('attendance_lists')->onDelete('CASCADE');
         });
     }
 
