@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NFCToRegister;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -81,6 +82,14 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+        return redirect('users');
+    }
+
+    public function register(Request $request)
+    {
+        User::create($request->all());
+        $nfc = NFCToRegister::where('number', $request->get('nfc_id'));
+        $nfc->delete();
         return redirect('users');
     }
 }

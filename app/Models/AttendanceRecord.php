@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AttendanceRecord extends Model
 {
-    protected $fillable = ['user_id, nfc'];
+    protected $fillable = ['user_id', 'nfc', 'classroom_id'];
 
     public function user()
     {

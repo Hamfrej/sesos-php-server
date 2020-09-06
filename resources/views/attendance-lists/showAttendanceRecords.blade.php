@@ -9,7 +9,8 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-between p-1">
                 <div class="">
-                    <h2>Wpisy obecności dla listy {{ $attendanceList->lesson->name }} {{ $attendanceList->start_date }}</h2>
+                    <h2>Wpisy obecności dla
+                        listy {{ $attendanceList->lesson->name }} {{ $attendanceList->start_date }}</h2>
                 </div>
                 <div class="btn-group bt">
                     <a href="/attendance-lists" class="btn btn-primary">Wróć do list obecności</a>
@@ -32,7 +33,11 @@
                 @foreach($attendanceList->attendanceRecords as $attendanceRecord)
                     <tr>
                         <th scope="row"></th>
-                        <th>{{ $attendanceRecord->user->name }}</th>
+                        @if (isset($attendanceRecord->user->name))_
+                            <th>{{ $attendanceRecord->user->name }}</th>
+                        @else
+                            <th></th>
+                        @endif
                         <th>{{ $attendanceRecord->nfc }}</th>
                         <th>{{ $attendanceRecord->created_at}}</th>
                         <th>
